@@ -13,12 +13,31 @@ class App extends Component {
         this.state ={requstAns : false }
       }
 
-      
- render() {
- return (
- <div>
- <WordCard value = "hello"/>
- </div>
- );
- }
+      newgame = () => {
+        window.location.reload(false);
+      }
+    
+      requstAns = () => {
+        this.setState({
+          requstAns : true
+        })
+      }
+
+      getAnswer = (answer) => {
+        document.getElementById('solve').innerHTML = `${answer}`
+      }
+    
+      render() {
+        return (
+          <div className="App">
+            <h1 id="label">My Games </h1>
+            {  
+              <WordCard value={it.toUpperCase()} requstAns={this.state.requstAns} getAnswer ={this.getAnswer}/>     
+            }
+            <h2 id="input"></h2>
+            <h2 id="result"></h2>
+           
+          </div>
+        );
+      }
 }export default App;
