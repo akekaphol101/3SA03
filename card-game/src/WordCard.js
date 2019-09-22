@@ -36,12 +36,16 @@ export default class WordCard extends Component{
             }
         }
     }
-    
-    render(){
-        return (
-            <div>
-                { Array.from(this.props.value).map((c,i)=> <CharacterCard value = {c} key={i}/>)}
-            </div>
-        );
-    }
+
+    render() {
+        if(this.props.requstAns){
+            console.log(this.state.chars.join(''))
+            this.props.getAnswer(this.state.chars.join(''))
+        }
+     return (
+     <div>
+            { Array.from(this.props.value).map((c, i) => <CharacterCard value={c} key={i} activationHandler={this.activationHandler} {...this.state}/>) }
+     </div>
+     );
+     }
 }
